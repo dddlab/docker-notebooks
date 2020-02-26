@@ -4,7 +4,6 @@ services:
 
 script:
   - docker build --tag myimage .
-  - docker run myimage
 
 after_script:
   - docker images
