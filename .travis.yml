@@ -4,7 +4,7 @@ services:
 
 script:
   - echo ${TRAVIS_COMMIT:0:7}
-  - docker build --tag myimage .
+  - echo $(date)
 
 after_script:
   - docker images
