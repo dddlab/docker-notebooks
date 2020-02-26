@@ -4,7 +4,7 @@ services:
 
 script:
   - echo ${TRAVIS_COMMIT:0:7}
-  - echo $(date)
+  - echo v$(date +%Y%m%d).${TRAVIS_COMMIT:0:7}
 
 after_script:
   - docker images
