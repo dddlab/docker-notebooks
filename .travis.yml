@@ -3,7 +3,7 @@ services:
   - docker
 
 script:
-  - echo "TRAVIS_COMMIT: ${TRAVIS_COMMIT}"
+  - echo $TRAVIS_COMMIT
   - docker build --tag myimage .
 
 after_script:
