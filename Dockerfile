@@ -1,4 +1,5 @@
-FROM jupyter/scipy-notebook:1386e2046833
+ARG BASE_CONTAINER=jupyter/scipy-notebook:1386e2046833
+FROM $BASE_CONTAINER
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
