@@ -1,5 +1,5 @@
-ARG BASE_CONTAINER=debian
-FROM $BASE_CONTAINER
+ARG BASE_IMAGE=debian
+FROM $BASE_IMAGE
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends cowsay \
