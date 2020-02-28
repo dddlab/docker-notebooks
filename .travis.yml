@@ -3,9 +3,9 @@ services:
   - docker
 
 script:
-  - echo ${TRAVIS_COMMIT:0:7}
-  - echo v$(date +%Y%m%d).${TRAVIS_COMMIT:0:7}
-  - docker build --tag myimage:v$(date +%Y%m%d).${TRAVIS_COMMIT:0:7} base-scipy/
+  - echo "commit: " ${TRAVIS_COMMIT:0:7}
+  - echo "date:   " $(date +%Y%m%d)
+  - DTAG=${TRAVIS_COMMIT:0:7} DARGS="--build-arg BASE_CONTAINER=ubuntu" make build/qwer 
 
 after_script:
   - docker images
