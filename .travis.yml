@@ -5,6 +5,7 @@ script:
 - echo ${TRAVIS_COMMIT:0:7} "/" $(date +%Y%m%d)
 - DTAG=${TRAVIS_COMMIT:0:7} DARGS="--build-arg BASE_CONTAINER=ubuntu" make build/qwer
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker push qwer:${TRAVIS_COMMIT:0:7}
 after_script:
 - docker images
 env:
