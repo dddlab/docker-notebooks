@@ -12,6 +12,8 @@ script:
   - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/scipy-notebook:${DTAG}" make build/base-scipy
   - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/r-notebook:${DTAG}"     make build/base-rstudio
   - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/base-scipy-rstudio
+  - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/pstat-134
+  - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy-rstudio:${DTAG}"     make build/research-notebook
 after_script:
   - docker images
 env:
