@@ -1,10 +1,13 @@
 sudo: required
 services:
-  - docker
-
+- docker
 script:
-  - echo ${TRAVIS_COMMIT:0:7} "/" $(date +%Y%m%d)
-  - DTAG=${TRAVIS_COMMIT:0:7} DARGS="--build-arg BASE_CONTAINER=ubuntu" make build/qwer 
+- echo ${TRAVIS_COMMIT:0:7} "/" $(date +%Y%m%d)
+- DTAG=${TRAVIS_COMMIT:0:7} DARGS="--build-arg BASE_CONTAINER=ubuntu" make build/qwer
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 after_script:
-  - docker images
+- docker images
+env:
+  global:
+    secure: hv8mmYDpV8gm6Sis8eOJy0kGhaQa4AHv7SuzsT21K4YgB9PP/YFCm8NhNsayNnb6GIn2B6GHTPc/0ygGTWK0YjmYUlQ4ZjZENnlEtbFrXrgbuaezpt5v1uS47wRWqoU5iKqm65UvruBl3Ub5fwlDuBJSHE28oYW91kG8LvFw8otBO2O/HkqAdIlGfgDxG4InsoxqW9flI/XNf7yGUlBdvNlOdIAGpqy2QnCF8SQOJg822pqag0G1nVDBugWp/aF6VE4S5qCciNDkySN64nFfkCMlQhMHf5IAo7yPV20sTBD3JX5Yo9MZ9qdkkms56aGgm8hcZ+n+0WKBdznjabLT0LOC56agL13+0qg6QzfAReev8nfLZ+7rlwUwhkBQYYQDy0GaRKzS6KdiEP3fE9O70WZTWi8wAmkEjWRaE64VKHvWq1UOz5d2ZhnuMKI487vF4r3h7SW1zy21icAkcp08xOD/ZiSbYiNYXQw2psh2UF0t/vV8HYPAVqu6E6bKnmRQYGJ7HKe2TewNKVhl3rx5ExlxXiMcqbQj40/EwQpaQ9s8QkJ6oSUWJs/iTsilf84H2Ou2ZrV+K0ReSlS8JbdZjXur9Lgr4xbRf7JbofBikDktIf8VR0xyqk0acdGV5AeVW9fdhDo6q0qq3PxkHo8wheD7vY4xE3pv5rd329jpZt0=
