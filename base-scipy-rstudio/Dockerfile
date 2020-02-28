@@ -54,6 +54,8 @@ RUN conda install --quiet --yes \
 RUN conda install --quiet --yes r-e1071
 #### end
 
+USER root
+
 # Rstudio Pre-requisites
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
