@@ -16,7 +16,7 @@ after_script:
   - docker images
 env:
   global:
-    - OWNER=syoh # should match OWNER in Makefile
+    - OWNER=dddlab # should match OWNER in Makefile
     - JUPYTER_TAG=1386e2046833
     - DTAG="$(date +%Y%m%d)-${TRAVIS_COMMIT:0:7}"
     - secure: o4FUa4TIwWHHmXVFgQkK6m3psKSYho25IV1S/9UDuLR8cyFdRDU4duMvvrwALRn3ih6vrZoebQWIJsch+wB+idshi9ldibqfwnf/Dv8KhrRpTbNruxWQWatzlUo4/S/hnz10QQHssdJ04zzPv7FxVKmmlOEYqhYs6KjX1H9CD2ixFaMhx+/Zdo9MK1HOpILIvJ9ocTQFGSu/2eMPkYQl3t9yvKqGc5c0Z/SR9+OzkL1nZ4LEnM+rLqMNjpt4E0JoaXk+vILKo3u9rq7ERkzpRf7zFUYx8Te1viWyyWeeL76AFLEEsQ8NHZz01Zlg7Qg0z3qOzeGvRRCFAONatoNmT9mDXecM1RvsOjp2IKt4MvxLRNPUYyIcsteA+8isaBNcdOzcBjyGQ/M95zAxTt3Xdjq24Sfl3ZkcNtBZGFOKFoxhXqj6ABBbsoRbMERDEaG69AHnEoSQKYbaGQuPP7nKlxDs8eCPXRfJQG9iq1T6pOecAoY18KK8Rh9oqJUkxMno5db10ULR09Se6f7TCWwcSJxCXlGF9I02RMp8bpHAV9fHRx90qIviDBMi66yjz2tudvsfgXMND6sVjN7+GPyL4XsmGBLgg2zS+rhtJrLpGy4HMTeyNQ2cx53KmG6avw6vkkQb6QFk6dKqzLmU9ksk1KrxfZsFlQpEmk4zgN1IhLY=
