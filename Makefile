@@ -34,6 +34,7 @@ arch_patch/%: ## apply hardware architecture specific patches to the Dockerfile
 build/%: DARGS?=
 build/%: ## build the latest image for a stack
 	docker build $(DARGS) --rm --force-rm -t $(OWNER)/$(notdir $@):$(DTAG) ./$(notdir $@)
+	docker push $(OWNER)/$(notdir $@):$(DTAG)
 
 build-all: $(foreach I,$(ALL_IMAGES),arch_patch/$(I) build/$(I) ) ## build all stacks
 build-test-all: $(foreach I,$(ALL_IMAGES),arch_patch/$(I) build/$(I) test/$(I) ) ## build and test all stacks

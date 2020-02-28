@@ -2,11 +2,11 @@ sudo: required
 services:
 - docker
 script:
-- echo ${COMMIT_ID} "/" ${BUILD_DATE} "/" ${DTAG}
-- DTAG=${COMMIT_ID} DARGS="--build-arg BASE_CONTAINER=ubuntu" make build/qwer
-- DTAG=${ASDF} DARGS="--build-arg BASE_CONTAINER=ubuntu:${ASDF}" make build/qwer
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker push syoh/qwer:${COMMIT_ID}
+  # - echo ${COMMIT_ID} "/" ${BUILD_DATE} "/" ${DTAG}
+- DTAG=${COMMIT_ID} DARGS="--build-arg BASE_CONTAINER=ubuntu" make build/qwer
+  # - DTAG=${ASDF} DARGS="--build-arg BASE_CONTAINER=ubuntu:${ASDF}" make build/qwer
+  # - docker push syoh/qwer:${COMMIT_ID}
 after_script:
 - docker images
 env:
