@@ -1,13 +1,15 @@
 sudo: required
 services:
-- docker
+  - docker
 script:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker pull jupyter/scipy-notebook:${JUPYTER_TAG}; docker tag syoh/scipy-notebook:${DTAG}; docker push syoh/scipy-notebook:${DTAG}
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull jupyter/scipy-notebook:${JUPYTER_TAG}
+  - docker tag  jupyter/scipy-notebook:${JUPYTER_TAG} syoh/scipy-notebook:${DTAG}
+  - docker push    syoh/scipy-notebook:${DTAG}
   # - docker pull jupyter/r-notebook:${JUPYTER_TAG};     docker tag syoh/r-notebook:${DTAG}    ; docker push syoh/r-notebook:${DTAG}
   # - DARGS="--build-arg BASE_CONTAINER=${BASE_CONTAINER}" make build/${TARGET}
 after_script:
-- docker images
+  - docker images
 env:
   global:
     - JUPYTER_TAG=1386e2046833
