@@ -30,7 +30,7 @@ RUN \
     fix-permissions /home/$NB_USER
 
 RUN \
-    conda install --quiet --yes 'r-rcppeigen=0.3.3.7.0' \
+    conda install --quiet --yes 'r-rcppeigen=0.3.3.7.0' && \
     conda install -c menpo dlib && \
     pip install \
         cvxpy nltk quandl ipywebrtc \
