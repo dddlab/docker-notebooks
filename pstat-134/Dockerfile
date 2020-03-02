@@ -28,7 +28,8 @@ RUN \
 
 USER root
 
-RUN sudo apt-get install -y cmake
+RUN sudo apt-get update && \
+    sudo apt-get install -y cmake
 
 USER $NB_UID
 
