@@ -30,11 +30,10 @@ RUN \
     fix-permissions /home/$NB_USER
 
 RUN \
-    conda install --quiet --yes 'r-rcppeigen=0.3.3.7.0' && \
-    conda install -c menpo dlib && \
+    install2.r RcppEigen && \
     pip install \
         cvxpy nltk quandl ipywebrtc \
-        face_recognition jupyter-server-proxy \
+        jupyter-server-proxy \
         cppimport \
         git+https://github.com/ucsb-pstat/jupyter-rsession-proxy && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-webrtc --clean && \
@@ -44,5 +43,3 @@ RUN \
     conda clean --all -f -y && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
-
-
