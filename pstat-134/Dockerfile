@@ -34,6 +34,7 @@ RUN sudo apt-get update && \
 USER $NB_UID
 
 RUN \
-    conda install -c menpo dlib && \
-    pip install cvxpy nltk quandl ipywebrtc face_recognition && \
+    pip install cvxpy nltk quandl ipywebrtc && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-webrtc
+    # face_recognition 
+    #conda install -c menpo dlib && \
