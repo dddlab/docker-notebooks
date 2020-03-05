@@ -34,6 +34,9 @@ RUN pip install nbgitpuller okpy && \
     jupyter labextension install jupyterlab_vim --clean && \
     jupyter labextension disable jupyterlab_vim && \
     \
+    # jupyter lab katex math rendering
+    jupyter labextension install @jupyterlab/katex-extension
+    \
     # remove cache
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
     conda clean --all -f -y && \
