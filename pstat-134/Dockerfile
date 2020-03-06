@@ -14,8 +14,8 @@ RUN \
     jupyter nbextension enable table_beautifier/main --sys-prefix && \
     \
     # Notebook extensions configurator (server on and interface off)
-    jupyter nbextension install jupyter_nbextensions_configurator --py --sys-prefix && \
-    jupyter nbextensions_configurator disable --sys-prefix && \
+    jupyter nbextension install jupyter_nbextensions_configurator --sys-prefix && \
+    # jupyter nbextensions_configurator disable --sys-prefix && \
     jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
     \
     # jupyter lab extensions
