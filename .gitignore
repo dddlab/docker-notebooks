@@ -1,0 +1,11 @@
+*.swp
+.env
+env_file
+home*
+keys
+hash_password
+*/
+!base-scipy/
+!base-rstudio/
+!base-scipy-rstudio/
+

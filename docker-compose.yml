@@ -1,0 +1,19 @@
+version: '3'
+services:
+  notebook:
+    build:
+      context: ./${IMAGE}
+      dockerfile: Dockerfile
+    image: ${DOCKER_ORG}${IMAGE}:${TAG:-latest}
+    # container_name: ${IMAGE}-${TAG:-latest}
+    volumes:
+      - ${HOST_DIR}:/home/jovyan
+      - ${CERT_DIR}:/etc/ssl/notebook
+    user: 'root'
+    env_file: env_file
+    ports:
+      - ${PORT:-8888}:8888
+    command: "start-notebook.sh \
+              --NotebookApp.password=${PASSWD} \
+              --NotebookApp.certfile=/etc/ssl/notebook/mycert.pem \
+              --NotebookApp.keyfile=/etc/ssl/notebook/mykey.key"
