@@ -40,8 +40,7 @@ USER $NB_UID
 
 RUN pip install nbgitpuller okpy && \
     pip install git+https://github.com/okpy/jassign.git && \
-    pip install jupyter-server-proxy && \
-    pip install git+https://github.com/ucsb-pstat/jupyter-rsession-proxy && \
+    pip install jupyter-server-proxy jupyter-rsession-proxy && \
     \
     # remove cache
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
