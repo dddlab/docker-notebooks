@@ -105,8 +105,7 @@ RUN \
     
 USER $NB_USER
 
-RUN pip install jupyter-server-proxy && \
-    pip install git+https://github.com/ucsb-pstat/jupyter-rsession-proxy && \
+RUN pip install jupyter-server-proxy jupyter-rsession-proxy && \
     \
     # remove cache
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
