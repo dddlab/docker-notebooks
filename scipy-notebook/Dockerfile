@@ -3,7 +3,7 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
-USER $NB_UID
+USER $NB_USER
 
 RUN \
     # Notebook extensions (TOC extension)
@@ -31,7 +31,7 @@ USER root
 RUN sudo apt-get update && \
     sudo apt-get install -y cmake
 
-USER $NB_UID
+USER $NB_USER
 
 RUN \
     pip install cvxpy nltk quandl ipywebrtc && \

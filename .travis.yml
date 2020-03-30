@@ -28,6 +28,7 @@ jobs:
     - script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/r-notebook:${DTAG}"     make build/base-rstudio
     - stage: dddlab-user-images
       script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/base-scipy-rstudio
+    - script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/scipy-notebook
       
 after_script:
   - docker images
