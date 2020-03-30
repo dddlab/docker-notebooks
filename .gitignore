@@ -7,5 +7,6 @@ hash_password
 */
 !base-scipy/
 !base-rstudio/
-!base-scipy-rstudio/
+!python-notebook/
+!python-rstudio-notebook/
 

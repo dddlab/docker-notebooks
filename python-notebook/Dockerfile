@@ -13,11 +13,6 @@ RUN \
     jupyter nbextension enable toggle_all_line_numbers/main --sys-prefix && \
     jupyter nbextension enable table_beautifier/main --sys-prefix && \
     \
-    # Notebook extensions configurator (server on and interface off)
-    jupyter nbextension install jupyter_nbextensions_configurator --sys-prefix && \
-    # jupyter nbextensions_configurator disable --sys-prefix && \
-    jupyter serverextension enable jupyter_nbextensions_configurator --sys-prefix && \
-    \
     # jupyter lab extensions
     jupyter labextension install @jupyterlab/toc --clean && \
     \
@@ -26,15 +21,16 @@ RUN \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-USER root
-
-RUN sudo apt-get update && \
-    sudo apt-get install -y cmake
-
-USER $NB_USER
+RUN \
+    pip install "jupytext==1.3.0" cvxpy nltk quandl && \
+    jupyter nbextensions_configurator disable --sys-prefix && \
+    \
+    rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 RUN \
-    pip install cvxpy nltk quandl ipywebrtc && \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-webrtc
+    pip install ipywebrtc && \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-webrtc --clean
     # face_recognition 
     #conda install -c menpo dlib && \
