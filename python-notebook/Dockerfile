@@ -22,8 +22,12 @@ RUN \
     fix-permissions /home/$NB_USER
 
 RUN \
-    pip install "jupytext==1.3.0" cvxpy nltk quandl && \
-    jupyter nbextensions_configurator disable --sys-prefix && \
+    pip install \
+        "jupytext==1.3.0" \
+        cvxpy \
+        nltk \
+        quandl \ 
+        altair vega_datasets && \
     \
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
     fix-permissions $CONDA_DIR && \

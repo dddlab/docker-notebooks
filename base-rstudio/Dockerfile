@@ -36,7 +36,7 @@ RUN \
 	echo "$R_HOME/lib" | sudo tee -a /etc/ld.so.conf.d/littler.conf && \
 	ldconfig
     
-USER $NB_UID
+USER $NB_USER
 
 RUN pip install nbgitpuller okpy && \
     pip install git+https://github.com/okpy/jassign.git && \
