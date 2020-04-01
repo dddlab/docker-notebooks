@@ -13,11 +13,23 @@ env:
 jobs:
   include:
     - stage: dddlab-base-images
-      script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=jupyter/scipy-notebook:${JUPYTER_TAG}" make build/base-scipy
-    - script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=jupyter/r-notebook:${JUPYTER_TAG}"     make build/base-rstudio
+      name: base-scipy
+      script: 
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=jupyter/scipy-notebook:${JUPYTER_TAG}" make build/base-scipy
+    - name: base-rstudio
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=jupyter/r-notebook:${JUPYTER_TAG}"     make build/base-rstudio
     - stage: dddlab-user-images
-      script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/python-rstudio-notebook
-    - script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin; DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/python-notebook
+      name: python-rstudio-notebook
+      script: 
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/python-rstudio-notebook
+    - name: python-notebook
+      script: 
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - DTAG=${DTAG} DARGS="--build-arg BASE_IMAGE=${OWNER}/base-scipy:${DTAG}"     make build/python-notebook
       
 after_script:
   - docker images
