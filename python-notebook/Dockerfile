@@ -23,7 +23,6 @@ RUN \
 
 RUN \
     pip install \
-        "jupytext==1.3.0" \
         cvxpy \
         nltk \
         quandl \ 
@@ -50,4 +49,17 @@ RUN \
     jupyter nbextension enable nbzip --py --sys-prefix && \
     \
     jupyter lab build
+
+RUN \
+    ## Jupyter Classic Notebook Extensions
+    jupyter nbextensions_configurator enable --sys-prefix && \
+    \
+    pip install --pre rise && \
+    jupyter nbextension install rise --py --sys-prefix && \
+    jupyter nbextension enable rise --py --sys-prefix && \
+    \
+    pip install hide_code && \
+    jupyter nbextension install --py hide_code --sys-prefix && \
+    jupyter nbextension enable --py hide_code --sys-prefix && \
+    jupyter serverextension enable --py hide_code --sys-prefix
 

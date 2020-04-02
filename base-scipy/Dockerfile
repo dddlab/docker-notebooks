@@ -21,9 +21,6 @@ USER $NB_USER
 RUN pip install nbgitpuller okpy && \
     pip install git+https://github.com/okpy/jassign.git && \
     \
-    # jupytext
-    pip install "jupytext==1.3.0" && \
-    \
     # classic notebook vim binding
     git clone https://github.com/lambdalisue/jupyter-vim-binding \
         /opt/conda/share/jupyter/nbextensions/vim_binding && \
