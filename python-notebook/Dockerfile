@@ -38,3 +38,16 @@ RUN \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-webrtc --clean
     # face_recognition 
     #conda install -c menpo dlib && \
+
+RUN \
+    pip install --upgrade jupyterlab-git && \
+    \
+    jupyter nbextension enable export_embedded/main --sys-prefix && \
+    \
+    pip install nbzip && \
+    jupyter serverextension enable nbzip --py --sys-prefix && \
+    jupyter nbextension install nbzip --py --sys-prefix && \
+    jupyter nbextension enable nbzip --py --sys-prefix && \
+    \
+    jupyter lab build
+
