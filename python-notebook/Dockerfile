@@ -63,3 +63,11 @@ RUN \
     jupyter nbextension enable --py hide_code --sys-prefix && \
     jupyter serverextension enable --py hide_code --sys-prefix
 
+RUN pip install otter-grader
+    
+USER root
+
+RUN sudo apt-get update && sudo apt-get install libxtst-dev
+
+USER $NB_USER
+
