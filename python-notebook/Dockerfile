@@ -67,7 +67,7 @@ RUN pip install otter-grader
     
 USER root
 
-RUN sudo apt-get update && sudo apt-get install libxtst-dev
+RUN sudo apt-get update && sudo apt-get install -y libxtst-dev
 
 USER $NB_USER
 
