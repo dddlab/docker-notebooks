@@ -3,6 +3,16 @@ FROM $BASE_IMAGE
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 
+USER root
+
+RUN apt-get update && \
+    apt-get install -y 
+        libxtst-dev \
+        zsh \
+        powerline \
+        fonts-powerline \
+        less
+
 USER $NB_USER
 
 RUN \
@@ -26,7 +36,8 @@ RUN \
         cvxpy \
         nltk \
         quandl \ 
-        altair vega_datasets && \
+        altair vega_datasets \
+        otter-grader && \
     \
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
@@ -62,12 +73,4 @@ RUN \
     jupyter nbextension install --py hide_code --sys-prefix && \
     jupyter nbextension enable --py hide_code --sys-prefix && \
     jupyter serverextension enable --py hide_code --sys-prefix
-
-RUN pip install otter-grader
-    
-USER root
-
-RUN sudo apt-get update && sudo apt-get install -y libxtst-dev
-
-USER $NB_USER
 
