@@ -6,7 +6,7 @@ LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 USER root
 
 RUN apt-get update && \
-    apt-get install -y 
+    apt-get install -y \
         libxtst-dev \
         zsh \
         powerline \
@@ -37,7 +37,8 @@ RUN \
         nltk \
         quandl \ 
         altair vega_datasets \
-        otter-grader && \
+        otter-grader \
+	ipympl&& \
     \
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
