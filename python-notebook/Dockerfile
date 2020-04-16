@@ -38,7 +38,7 @@ RUN \
         quandl \ 
         altair vega_datasets \
         otter-grader \
-	ipympl&& \
+	ipympl && \
     \
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
