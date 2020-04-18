@@ -6,12 +6,13 @@ LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
 USER root
 
 RUN apt-get update && \
-    apt-get install -y 
+    apt-get install -y \
         libxtst-dev \
         zsh \
         powerline \
         fonts-powerline \
-        less
+        less \
+        bsdmainutils
 
 USER $NB_USER
 
@@ -33,11 +34,13 @@ RUN \
 
 RUN \
     pip install \
+        pandas==1.0.3 \
         cvxpy \
         nltk \
         quandl \ 
         altair vega_datasets \
-        otter-grader && \
+        otter-grader \
+        ipympl && \
     \
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
     fix-permissions $CONDA_DIR && \
@@ -73,4 +76,9 @@ RUN \
     jupyter nbextension install --py hide_code --sys-prefix && \
     jupyter nbextension enable --py hide_code --sys-prefix && \
     jupyter serverextension enable --py hide_code --sys-prefix
+
+RUN pip install ipympl && \
+    jupyter labextension install jupyter-matplotlib && \
+    jupyter labextension update --all && \
+    rm /opt/conda/share/jupyter/lab/extensions/jupyter-matplotlib-0.4.*
 
