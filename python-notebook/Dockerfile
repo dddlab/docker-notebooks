@@ -80,5 +80,5 @@ RUN \
 RUN pip install ipympl && \
     jupyter labextension install jupyter-matplotlib && \
     jupyter labextension update --all && \
-    rm /opt/conda/share/jupyter/lab/extensions/jupyter-matplotlib-0.4.*
+    rm -f /opt/conda/share/jupyter/lab/extensions/jupyter-matplotlib-0.4.*
 
