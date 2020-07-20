@@ -1,7 +1,7 @@
 # JupyterLabs on Eucalytpus
 
 ## Mounting
-- Copy everything `/home` to `/mnt`
+- Copy everything `/home` to `/mnt`.  Make sure everything has ubuntu read priviliges.  If it's root you'll get locked out.
 - Edit `/etc/fstab` to set mount point from `/mnt` to `/home`
 - `sudo mount /dev/vdb /home` and `sudo umount /mnt`
 
