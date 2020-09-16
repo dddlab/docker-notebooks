@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=jupyter/scipy-notebook:1386e2046833
+ARG BASE_IMAGE=jupyter/scipy-notebook:94fdd01b492f
 FROM $BASE_IMAGE
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"
@@ -18,23 +18,4 @@ RUN \
 
 USER $NB_USER
 
-RUN pip install nbgitpuller okpy && \
-    pip install git+https://github.com/okpy/jassign.git && \
-    \
-    # classic notebook vim binding
-    git clone https://github.com/lambdalisue/jupyter-vim-binding \
-        /opt/conda/share/jupyter/nbextensions/vim_binding && \
-    jupyter nbextension disable vim_binding/vim_binding --sys-prefix && \
-    \
-    # jupyter lab vim binding
-    jupyter labextension install \
-        @jupyterlab/katex-extension \
-        jupyterlab_vim \
-        --clean && \
-    jupyter labextension disable jupyterlab_vim && \
-    \
-    # remove cache
-    rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
-    conda clean --all -f -y && \
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+RUN pip install nbgitpuller
