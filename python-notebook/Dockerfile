@@ -40,6 +40,7 @@ RUN \
         quandl \ 
         altair vega_datasets \
         otter-grader \
+        geopandas descartes contextily \
         ipympl && \
     \
     rm -rf ~/.cache/pip ~/.cache/matplotlib ~/.cache/yarn && \
