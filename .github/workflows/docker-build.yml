@@ -12,7 +12,7 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           context: .
-          file: ./base-scipy/Dockerfile
+          dockerfile: base-scipy/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: dddlab/base-scipy
