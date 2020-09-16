@@ -11,10 +11,9 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v1.1.0
         with:
-          context: .
           dockerfile: base-scipy/Dockerfile
+          repository: dddlab/base-scipy
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: dddlab/base-scipy
           tag_with_ref: true
           tag_with_sha: true
