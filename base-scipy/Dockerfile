@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=jupyter/scipy-notebook:94fdd01b492f
+ARG BASE_IMAGE=jupyter/scipy-notebook:7a0c7325e470
 FROM $BASE_IMAGE
 
 LABEL maintainer="Sang-Yun Oh <syoh@ucsb.edu>"

@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=jupyter/r-notebook:1386e2046833
+ARG BASE_IMAGE=jupyter/r-notebook:7a0c7325e470
 FROM $BASE_IMAGE
 
 USER root
@@ -38,8 +38,7 @@ RUN \
     
 USER $NB_USER
 
-RUN pip install nbgitpuller okpy && \
-    pip install git+https://github.com/okpy/jassign.git && \
+RUN pip install nbgitpuller && \
     pip install jupyter-server-proxy jupyter-rsession-proxy && \
     \
     # remove cache
